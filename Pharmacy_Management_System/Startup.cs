@@ -41,6 +41,7 @@ namespace Pharmacy_Management_System
             services.AddScoped<DoctorDAL>();
             services.AddScoped<AdminDAL>();
             services.AddScoped<SupplierDAL>();
+            services.AddScoped<DrugDAL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
