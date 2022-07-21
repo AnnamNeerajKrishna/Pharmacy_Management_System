@@ -1,4 +1,5 @@
 ﻿using Pharmacy_Management_System.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,14 +12,34 @@ namespace Pharmacy_Management_System.Repository
         {
             _db = db;
         }
+        /// <summary>
+        /// Adding new supplier by Admin
+        /// </summary>
+        /// <param name="supplier"></param>
+        /// <returns></returns>
+        #region AddSupplier
+
         public string AddSupplier(Supplier supplier)
         {
-            _db.SupplierDetails.Add(supplier);
-            _db.SaveChanges();
-            return "Supplier Added Successfully";
-                
+            try
+            {
+                _db.SupplierDetails.Add(supplier);
+                _db.SaveChanges();
+                return "Supplier Added Successfully";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+        #endregion
 
+        #region DeleteSupplier
+        /// <summary>
+        /// To Deleting the Existing Supplier
+        /// </summary>
+        /// <param name="supplierId"></param>
+        /// <returns></returns>
         public Supplier DeleteSupplier(int supplierId)
         {
             var item = _db.SupplierDetails.FirstOrDefault(c => c.SupplierId == supplierId);
@@ -31,28 +52,64 @@ namespace Pharmacy_Management_System.Repository
             return item;
 
         }
-
+        #endregion
+       
+        #region GetSupplier
+        /// <summary>
+        /// Get all the Suppliers present
+        /// </summary>
+        /// <param name="supplierId"></param>
+        /// <returns></returns>
+        
         public Supplier GetSupplier(int supplierId)
         {
-            return _db.SupplierDetails.FirstOrDefault(c => c.SupplierId == supplierId);
-            
+            try
+            {
+                return _db.SupplierDetails.FirstOrDefault(c => c.SupplierId == supplierId);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-
+        #endregion
         public List<Supplier> ShowAllSuppliers()
         {
-            var list=_db.SupplierDetails.ToList();
-            return list;
+            try
+            {
+                var list = _db.SupplierDetails.ToList();
+                return list;
+            }
+            catch(Exception ex)
+            {
+                throw ex.InnerException;
+            }
         }
-
+        /// <summary>
+        /// Updating the Supplier
+        /// </summary>
+        /// <param name="supplierId"></param>
+        /// <param name="supplier"></param>
+        /// <returns></returns>
+        /// 
+        #region UpdateSupplier
         public string UpdateSupplier(int supplierId,Supplier supplier)
         {
-            var item = _db.SupplierDetails.FirstOrDefault(c => c.SupplierId == supplierId);
-            if (item != null)
+            try
             {
-                _db.Entry(item).CurrentValues.SetValues(supplier);
-                _db.SaveChanges();
+                var item = _db.SupplierDetails.FirstOrDefault(c => c.SupplierId == supplierId);
+                if (item != null)
+                {
+                    _db.Entry(item).CurrentValues.SetValues(supplier);
+                    _db.SaveChanges();
+                }
+                return "Updated Successfully";
             }
-            return "Updated Successfully";
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
+        #endregion
     }
 }

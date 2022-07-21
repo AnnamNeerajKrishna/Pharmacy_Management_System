@@ -98,9 +98,6 @@ namespace Pharmacy_Management_System.Controllers
             return Ok("Supplier is Removed successfully");
         }
 
-        //private bool SupplierExists(int id)
-        //{
-        //    return _context.SupplierDetails.Any(e => e.SupplierId == id);
-        //}
+        
     }
 }
