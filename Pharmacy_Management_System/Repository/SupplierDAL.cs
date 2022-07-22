@@ -82,7 +82,7 @@ namespace Pharmacy_Management_System.Repository
             }
             catch(Exception ex)
             {
-                throw ex.InnerException;
+                throw ex;
             }
         }
         /// <summary>

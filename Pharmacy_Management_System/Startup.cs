@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Pharmacy_Management_System.Repository;
+using Pharmacy_Management_System.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,10 +39,14 @@ namespace Pharmacy_Management_System
 
             services.AddDbContext<PharmacyContextDb>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddScoped<DoctorService>();
             services.AddScoped<DoctorDAL>();
+            services.AddScoped<AdminService>();
             services.AddScoped<AdminDAL>();
-            services.AddScoped<SupplierDAL>();
+            services.AddScoped<DrugService>();
             services.AddScoped<DrugDAL>();
+            services.AddScoped<SupplierService>();
+            services.AddScoped<SupplierDAL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

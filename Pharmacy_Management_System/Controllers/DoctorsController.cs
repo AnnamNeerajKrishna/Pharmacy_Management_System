@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Pharmacy_Management_System;
 using Pharmacy_Management_System.Model;
 using Pharmacy_Management_System.Repository;
+using Pharmacy_Management_System.Services;
 
 namespace Pharmacy_Management_System.Controllers
 {
@@ -15,9 +16,9 @@ namespace Pharmacy_Management_System.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-         DoctorDAL _context;
+         DoctorService _context;
 
-        public DoctorsController(DoctorDAL context)
+        public DoctorsController(DoctorService context)
         {
             _context = context;
         }

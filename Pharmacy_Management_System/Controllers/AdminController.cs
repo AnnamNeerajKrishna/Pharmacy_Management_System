@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pharmacy_Management_System.Repository;
+using Pharmacy_Management_System.Services;
 
 namespace Pharmacy_Management_System.Controllers
 {
@@ -8,8 +9,8 @@ namespace Pharmacy_Management_System.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        AdminDAL _context;
-        public AdminController(AdminDAL context)
+        AdminService _context;
+        public AdminController(AdminService context)
         {
             _context = context;
         }
