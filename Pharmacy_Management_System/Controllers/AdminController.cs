@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pharmacy_Management_System.Repository;
 using Pharmacy_Management_System.Services;
@@ -15,6 +16,9 @@ namespace Pharmacy_Management_System.Controllers
             _context = context;
         }
         // GET: api/Doctors/5
+        
+       
+
         [HttpGet("SearchDoctor/{id}")]
         public IActionResult GetDoctor(string id)
         {

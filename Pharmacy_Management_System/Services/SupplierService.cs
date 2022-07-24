@@ -9,7 +9,7 @@ namespace Pharmacy_Management_System.Services
         private readonly SupplierDAL _supplier;
         public SupplierService(SupplierDAL supplier)
         {
-            _supplier= supplier;
+            _supplier = supplier;
         }
         public string AddSupplier(Supplier supplier)
         {
