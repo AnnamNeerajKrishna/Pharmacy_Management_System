@@ -24,6 +24,13 @@ namespace Pharmacy_Management_System.Migrations
                     b.Property<string>("DoctorId")
                         .HasColumnType("varchar(25)");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasColumnType("varchar(25)");
+
                     b.Property<string>("DoctorName")
                         .IsRequired()
                         .HasColumnType("varchar(25)");
@@ -124,7 +131,7 @@ namespace Pharmacy_Management_System.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(25)");
 
-                    b.Property<string>("EmailId")
+                    b.Property<string>("EmailID")
                         .IsRequired()
                         .HasColumnType("varchar(35)");
 

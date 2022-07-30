@@ -1,0 +1,62 @@
+<div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 style="text-align: center;  color: black; margin-left: 30px;">   Admin Dashboard</h1>
+        </div>
+        <div class="col-md-2">
+            <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
+                class="btn btn-primary">Back</button>
+            <img class="logo" style="width: 70px; height: 50px;" src="../assets/images/login.jpg" alt="">
+        </div>
+        <div>
+            <button class="btn btn-danger my-2 my-sm-0"(click)="onLogout()">LogOut</button>
+        </div>
+    </div>
+</div>
+
+<div class="row content">
+    <div class="container ">       
+        <!-- style="background-image: url(../assets/images/adminbackground.jpg); height:570px; -->
+        <div class="box">
+            <div class="icon">01</div>
+            <div class="content">
+                <h3>Supplier</h3>
+                <p>Select operation to make changes.</p>
+                    <br>
+                   
+                <button type="button" [routerLink]="['/supplier']">Details</button>
+
+            </div>
+        </div>
+        <div class="box">
+            <div class="icon">02</div>
+            <div class="content">
+                <h3>Drugs</h3>
+                <p>Select operation to make changes.</p>
+                    <br>
+                <button type="button" [routerLink]="['/admindrug']">Details</button>
+        
+            </div>
+        </div>
+        <div class="box">
+            <div class="icon">03</div>
+            <div class="content">
+                <h3>Order Details</h3>
+                <p>Select operation to make changes.</p>
+                    <br>
+                <button type="button" [routerLink]="['/adminorders']">Details</button>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="Container" style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+    <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
+                here..</strong></span></footer>
+</div>
+

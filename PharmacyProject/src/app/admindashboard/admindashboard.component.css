@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    font-family: 'Poppins',sans-serif;
+}
+.row content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    height:575px;
+    justify-content: space-between;
+    background-color:#fff;
+}
+.container .box{
+    position: relative;
+    width: 350px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    margin:70px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: aliceblue;
+    text-align: center;
+   
+    border: solid;
+    /* background-image: url("adminbackgrond.jpg"); */
+
+}
+.container .box .icon{
+    position: relative;
+    width:80px;
+    height: 80px;
+    color: #fff;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    font-size: 40px;
+    font-weight: 600;
+    transition: 1s;
+}
+.container .box:nth-child(1) .icon{
+    box-shadow: 0 0 0 0 #e91e63;
+    background: #e91e63;
+}
+.container .box:nth-child(1):hover .icon{
+    box-shadow: 0 0 0 400px #e91e63;
+}
+.container .box:nth-child(2) .icon {
+    box-shadow: 0 0 0 0 #23e629;
+    background: #23e629;
+}
+
+.container .box:nth-child(2):hover .icon {
+    box-shadow: 0 0 0 400px #23e629;
+}
+
+.container .box:nth-child(3) .icon {
+    box-shadow: 0 0 0 0 #2196f3;
+    background: #2196f3;
+}
+
+.container .box:nth-child(3):hover .icon {
+    box-shadow: 0 0 0 400px #2196f3;
+}
+.container .box .content{
+    position: relative;
+    z-index: 1;
+
+    transition: 0.5s;
+}
+.container .box:hover .content{
+    color: #fff;
+}
+
+.container .box .content h3{
+    font-size: 30px;
+    margin:10px 0;
+    padding: 0;
+    color: #000;
+}
+.container .box .content p{
+    margin:0;
+    padding: 0;
+    color: #000;
+    font-weight: 500;
+    font-size: 20px;
+
+}
+
+.container .box .content button{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-top: 20px;
+  
+    box-shadow: rgba(0, 0, 0, .2);
+}

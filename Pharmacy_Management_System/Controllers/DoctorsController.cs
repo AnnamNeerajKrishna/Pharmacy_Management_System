@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,33 +17,15 @@ namespace Pharmacy_Management_System.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-         DoctorService _context;
+        DoctorService _context;
 
         public DoctorsController(DoctorService context)
         {
             _context = context;
         }
 
-        // GET: api/Doctors
-      //  [HttpGet]
-        //public async IActionResult GetDoctorsDetails()
-        //{
-            
-        //}
-
-       
-
-        // PUT: api/Doctors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutDoctor(string id, Doctor doctor)
-        //{
-            
-        //}
-
-        // POST: api/Doctors
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("DoctorRegistration")]
+      //  [Authorize]
         public IActionResult PostDoctor(Doctor doctor)
         {
 
@@ -51,20 +34,9 @@ namespace Pharmacy_Management_System.Controllers
                 return BadRequest(ModelState);
             }
             _context.AddDoctor(doctor);
-            return Ok("Doctor Added Successfully");
+            return Ok("true");
 
         }
-
-        // DELETE: api/Doctors/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteDoctor(string id)
-        //{
-            
-        //}
-
-        //private bool DoctorExists(string id)
-        //{
-        //    return _context.DoctorsDetails.Any(e => e.DoctorId == id);
-        //}
+       
     }
 }

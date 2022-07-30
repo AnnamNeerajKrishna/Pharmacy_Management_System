@@ -53,7 +53,7 @@ namespace Pharmacy_Management_System
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pharmacy_Management_System", Version = "v1" });
             });
 
-
+            
             services.AddDbContext<PharmacyContextDb>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
             services.AddScoped<DoctorService>();
@@ -64,6 +64,16 @@ namespace Pharmacy_Management_System
             services.AddScoped<DrugDAL>();
             services.AddScoped<SupplierService>();
             services.AddScoped<SupplierDAL>();
+            services.AddScoped<OrderService>();
+            services.AddScoped<OrdersDAL>();
+
+            services.AddCors(option =>
+            {
+                option.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +89,7 @@ namespace Pharmacy_Management_System
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
             app.UseAuthentication();    
             app.UseAuthorization();
 

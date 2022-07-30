@@ -14,7 +14,7 @@ namespace Pharmacy_Management_System.Model
         [Required]
         [Column(TypeName = "varchar(35)")]
         [MinLength(8)]
-        public string EmailId { get; set;}
+        public string EmailID { get; set;}
 
         // [Phone]
       //  [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
