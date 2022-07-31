@@ -26,7 +26,7 @@ namespace Pharmacy_Management_System.Controllers
 
         // GET: api/Suppliers
         [HttpGet("GetAllSuppliers")]
-        [Authorize(Roles = "administrator")]
+      //  [Authorize(Roles = "administrator")]
         public IActionResult ShowAllSupplier()
         {
             /*var CurrentUser = GetCurrentUser();*/
@@ -40,7 +40,7 @@ namespace Pharmacy_Management_System.Controllers
 
         // GET: api/Suppliers/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "administrator")]
+        //[Authorize(Roles = "administrator")]
         public IActionResult GetSupplier(int id)
         {
              if (!ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace Pharmacy_Management_System.Controllers
         //// PUT: api/Suppliers/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "administrator")]
+        //[Authorize(Roles = "administrator")]
         public IActionResult PutSupplier(int id, Supplier supplier)
         {
            
@@ -78,7 +78,7 @@ namespace Pharmacy_Management_System.Controllers
         // POST: api/Suppliers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "administrator")]
+        //[Authorize(Roles = "administrator")]
         public IActionResult PostSupplier(Supplier supplier)
         {
             if (!ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace Pharmacy_Management_System.Controllers
 
         // DELETE: api/Suppliers/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "administrator")]
+        //[Authorize(Roles = "administrator")]
         public IActionResult DeleteSupplier(int id)
         {
             var supplier = _context.GetSupplier(id);
