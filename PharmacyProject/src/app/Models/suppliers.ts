@@ -1,7 +1,7 @@
 export class Suppliers {
-    SupplierId:number;
-    SupplierName:string;
-    EmailID:string;
-    Contact:number;
-    //DrugAvailable:string;
+    supplierId:number;
+    supplierName:string;
+    emailID:string;
+    contact:string;
+    drugAvailable:string;
 }

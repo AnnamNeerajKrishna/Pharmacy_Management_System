@@ -1,3 +1,6 @@
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { PharmacyServiceService } from './../Shared/pharmacy-service.service';
 import { Suppliers } from './../Models/suppliers';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +17,8 @@ export class SupplierComponent implements OnInit {
   
 
 
-  constructor(private pharmacyService:PharmacyServiceService) { }
+  constructor(private pharmacyService:PharmacyServiceService,
+    private toaster :ToastrService,private router:Router) { }
 
   
 
@@ -34,31 +38,79 @@ export class SupplierComponent implements OnInit {
   }
   
   supplieradd : Suppliers={
-    SupplierId: 0,
-    SupplierName: '',
-    EmailID: '',
-    Contact: 0,
+    supplierId: 0,
+    supplierName: '',
+    emailID: '',
+    contact: '',
+    drugAvailable: ''
   }
 
-  onSubmit(){
-    this.pharmacyService.AddSupplier(this.supplieradd)
+  onSubmit(supplieradd:NgForm){
+    this.pharmacyService.AddSupplier(supplieradd.value)
     .subscribe(
       Response=>{
-        this.getAllSupplier();
-        this.pharmacyService.AddSupplier(this.supplieradd);
+        this.router.navigate(['/supplier']);
+        
+        this.getAllSupplier();    
       }
     )
+    this.toaster.success("Supplier was added");
+    function delay(time: any) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    delay(4000).then(() => console.log('ran after 1 second1 passed'));
+    window.location.reload();
   }
+  
 
 
-  DeleteSupplier(id:number){
-    this.pharmacyService.deleteSupplier(id)
-    .subscribe(
-      Response=>{
-        this.getAllSupplier();
+  onDelete(id:Suppliers){
+    this.pharmacyService.deleteSupplier(id.supplierId).subscribe(
+      res=>{
+        //this.drugs=this.drugs.filter(item=>item.drugId!==id);
+        console.log(res);
+        
+        this.getAllSupplier();    
+      }
+    )
+    this.toaster.success("Supplier was Deleted");
+    function delay(time: any) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    delay(5000).then(() => console.log('ran after 1 second1 passed'));
+    window.location.reload();
+  }
+  onUpdate(supplier:Suppliers){
+    (this.supplieradd.supplierId = supplier.supplierId);
+    (this.supplieradd.supplierName = supplier.supplierName);
+    (this.supplieradd.emailID = supplier.emailID);
+    (this.supplieradd.contact = supplier.contact);
+    (this.supplieradd.drugAvailable = supplier.drugAvailable);
+  
+  }
+  updatesupplier(supplier:Suppliers){
+    this.pharmacyService.updateSupplier(supplier).subscribe(
+      res=>{
+        //this.drugs=this.drugs.filter(item=>item.drugId!==id);
+        console.log(res);
+        
+        this.getAllSupplier();    
       }
     );
+    this.toaster.success("Supplier was Updated");
+    function delay(time: any) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
 
+    delay(5000).then(() => console.log('ran after 1 second1 passed'));
+    window.location.reload();
+  }
+  onLogout(){
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  
   }
 
 }

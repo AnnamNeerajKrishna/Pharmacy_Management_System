@@ -1,91 +1,92 @@
 <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
     <div class="row">
-        <div class="col-md-10">
-            <h1 style="color: black; text-align: center; margin-left: 30px;">Drugs</h1>
-        </div>
-        <div class="col-md-2">
-            <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
-                class="btn btn-primary">Logout</button>
-            <button type="button" [routerLink]="['/home']" ><i class="fa-solid fa-cart-plus"></i></button>
-            
-        </div>
+      <div class="col-md-10">
+        <h1 style="color: black; text-align: center; margin-left: 30px;">Drugs</h1>
+      </div>
+      <div class="col-md-2">
+        <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary" (click)="LogOut()">Logout</button>
+        <button type="button" [routerLink]="['/home']"><i class="fa-solid fa-cart-plus"></i></button>
+  
+      </div>
     </div>
-</div>
-
-<div class="container">
+  </div>
+  
+  <div class="container">
     <div class="row content">
-       <div class="boxContainer">
+      <div class="boxContainer">
         <table class="elementsContainer">
-            <tr>
-                <td>
-                    <input type="text" placeholder="Search Drug" class="Search">
-                </td>
-                <td>
-                    <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
-                </td>
-            </tr>
+          <tr>
+            <td>
+              <input type="text" placeholder="Search Drug" class="Search">
+            </td>
+            <td>
+              <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
+            </td>
+          </tr>
         </table>
-       </div>
-       <br>
-    <div class="table-wrapper">
-
-
-        
-    </div>
-    <div class="drugstable">
+      </div>
+      <br>
+      <div class="table-wrapper">
+  
+  
+  
+      </div>
+      <div class="drugstable">
         <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>
-                        <h4>DrugId</h4>
-                    </th>
-                    <th>
-                        <h4>DrugName</h4>
-                    </th>
-                    <th>
-                        <h4>Quantity</h4>
-                    </th>
-                    <th>
-                        <h4>Expiry Date</h4>
-                    </th>
-                    <th>
-                        <h4>price</h4>
-                    </th>
-                    <th>
-                        <h4>Add to cart</h4>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let number of[0,1,2,3,4,5,6,7]">
-                    <td>
-                        
-                    </td>
-                    <td>
-                       
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        <button type="button" [routerLink]="['/home']"><i class="fa-solid fa-cart-plus"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-
+          <thead>
+            <tr>
+              <th>
+                <h4>DrugId</h4>
+              </th>
+              <th>
+                <h4>DrugName</h4>
+              </th>
+              <th>
+                <h4>Quantity</h4>
+              </th>
+              <th>
+                <h4>Expiry Date</h4>
+              </th>
+              <th>
+                <h4>price</h4>
+              </th>
+              <th>
+                <h4>Add to cart</h4>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let number of DrugList">
+              <td>
+                {{number.drugId}}
+              </td>
+              <td>
+                {{number.drugName}}
+              </td>
+              <td>
+                {{number.drugQuantity}}
+              </td>
+              <td>
+                {{number.expDate}}
+              </td>
+              <td>
+                {{number.drugPrice}}
+              </td>
+              <td>
+                <button type="button" [routerLink]="['/home']"><i class="fa-solid fa-cart-plus"></i></button>
+              </td>
+            </tr>
+          </tbody>
+  
         </table>
+      </div>
     </div>
-    </div>
-    
-</div>
-
-<div class="Container" style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+  
+  </div>
+  
+  <div class="Container" style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
     <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
-                here..</strong></span></footer>
-</div>
+          here..</strong></span></footer>
+  </div>
+  

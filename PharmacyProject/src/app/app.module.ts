@@ -1,3 +1,4 @@
+import { PharmacyServiceService } from './Shared/pharmacy-service.service';
 /* import { TokenInterceptorService } from './Shared/token-interceptor.service';
  */import { AuthGuard } from './auth/auth.guard';
 import { LoginService } from './Shared/login.service';
@@ -44,7 +45,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     
   ],
-  providers: [DoctorSignUpService,LoginService,AuthGuard/*{
+  providers: [DoctorSignUpService,LoginService,PharmacyServiceService,AuthGuard/*{
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
       multi:true 

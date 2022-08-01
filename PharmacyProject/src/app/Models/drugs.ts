@@ -1,10 +1,10 @@
 export class Drugs {
-    DrugId:number;
-    DrugName:string;
-    DrugPrice:number;
-    DrugQuantity:number;
-    MfdDate:number;
-    ExpDate:number;
-    SupplierId:number;
+    drugId:number;
+    drugName:string;
+    drugPrice:number;
+    drugQuantity:number;
+    mfdDate:number;
+    expDate:number;
+    supplierId:number;
 }
 

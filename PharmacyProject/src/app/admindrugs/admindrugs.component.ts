@@ -1,7 +1,7 @@
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { PharmacyServiceService } from './../Shared/pharmacy-service.service';
 import { Drugs } from './../Models/drugs';
-import { LoginService } from './../Shared/login.service';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,45 +12,101 @@ import { Component, OnInit } from '@angular/core';
 export class AdmindrugsComponent implements OnInit {
   public drugs:Drugs[]=[];
 
+
   drugL:Drugs={
-    DrugId: 0,
-    DrugName: '',
-    DrugPrice: 0,
-    DrugQuantity: 0,
-    ExpDate: 0,
-    MfdDate: 0,
-    SupplierId: 0
+    drugId: 0,
+    drugName: '',
+    drugPrice: 0,
+    drugQuantity: 0,
+    expDate: 0,
+    mfdDate: 0,
+    supplierId: 0
   }
 
-  constructor(private pharmacyService:PharmacyServiceService) { }
+  constructor(private pharmacyService:PharmacyServiceService,private router:Router,private toaster:ToastrService) { }
 
   ngOnInit(): void {
     this.getAllDrugs();
-
+    console.log(this.drugs);
   }
   getAllDrugs(){
     this.pharmacyService.getalldrugs()
     .subscribe(
       response=>{
         this.drugs=response;
-        console.log(response);
+
+  //     console.log(this.drugs);
       }
 
     );
   }
-
   onSubmit(){
-    console.log(this.drugL);
+  
     this.pharmacyService.AddDrugs(this.drugL)
     .subscribe(
       Response=>{
-        console.log(Response);
-        console.log(this.drugL);
-        this.getAllDrugs();
-      
+     
+        this.router.navigate(['/admindrug']);
         
+        this.getAllDrugs();    
       }
     )
+    this.toaster.success("Drug was added");
+    function delay(time: any) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    delay(4000).then(() => console.log('ran after 1 second1 passed'));
+    window.location.reload();
+  }
+  onDelete(id:Drugs){
+    this.pharmacyService.deleteDrugs(id.drugId).subscribe(
+      res=>{
+        //this.drugs=this.drugs.filter(item=>item.drugId!==id);
+        console.log(res);
+        
+        this.getAllDrugs();    
+      }
+    )
+    this.toaster.success("Drug was Deleted");
+    function delay(time: any) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    delay(5000).then(() => console.log('ran after 1 second1 passed'));
+    window.location.reload();
+  }
+  onUpdate(drug:Drugs){
+    (this.drugL.drugId = drug.drugId);
+    (this.drugL.drugName = drug.drugName);
+    (this.drugL.drugPrice = drug.drugPrice);
+    (this.drugL.drugQuantity = drug.drugQuantity);
+    (this.drugL.expDate = drug.expDate);
+  (this.drugL.mfdDate = drug.mfdDate);
+    (this.drugL.supplierId = drug.supplierId);
+  }
+  
+  updatedrug(drug:Drugs){
+this.pharmacyService.updateDrug(drug).subscribe(
+  res=>{
+    //this.drugs=this.drugs.filter(item=>item.drugId!==id);
+    console.log(res);
+    
+    this.getAllDrugs();    
+  });
+  this.toaster.success("Drug was Updated");
+    function delay(time: any) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    delay(4000).then(() => console.log('ran after 1 second1 passed'));
+    window.location.reload();
+  }
+
+  onLogout(){
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  
   }
 
 }

@@ -4,8 +4,7 @@
             <h1 style="color: black; text-align: center; margin-left: 30px;">Drugs</h1>
         </div>
         <div class="col-md-2">
-            <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
-                class="btn btn-primary">Logout</button>
+            <button class="btn btn-danger my-2 my-sm-0"(click)="onLogout()">LogOut</button>
             <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
                 class="btn btn-primary">back</button>
 
@@ -51,33 +50,39 @@
 
 
                                     <form method="post" #form="ngForm" (ngSubmit)="onSubmit()">
-                                        <div class="form-group">
+                                        <div class="    form-group">
                                             <label for="validationCustom01" class="form-label">Name</label>
-                                            <input type="text" class="form-control" name="DrugName" [(ngModel)]="drugL.DrugName">
+                                            <input type="text" class="form-control" name="drugName" [(ngModel)]="drugL.drugName">
                                             
                                         </div>
                                         <div class="form-group">
                                             <label for="validationCustom02" class="form-label">Quantity</label>
-                                            <input type="text" class="form-control" name="DrugQuantity" [(ngModel)]="drugL.DrugQuantity">
+                                            <input type="text" class="form-control" name="drugQuantity" [(ngModel)]="drugL.drugQuantity">
                                             
                                         </div>
 
                                         <div class="form-group">
                                             <label for="validationCustom02" class="form-label">Expiry Date</label>
-                                            <input type="date" class="form-control" name="ExpDate" [(ngModel)]="drugL.ExpDate">
+                                            <input type="date" class="form-control" name="expDate" [(ngModel)]="drugL.expDate">
+                                        
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="validationCustom02" class="form-label">Mft Date</label>
+                                            <input type="date" class="form-control" name="mfdDate" [(ngModel)]="drugL.mfdDate">
                                         
                                         </div>
                     
                     
                                         <div class="form-group">
                                             <label for="validationCustom05" class="form-label">price</label>
-                                            <input type="text" class="form-control" name="DrugPrice" [(ngModel)]="drugL.DrugPrice">
+                                            <input type="text" class="form-control" name="drugPrice" [(ngModel)]="drugL.drugPrice">
                                             
                                         </div>
 
                                         <div class="form-group">
                                             <label for="validationCustom05" class="form-label">Supplier Id</label>
-                                            <input type="text" class="form-control" name="SupplierId"  [(ngModel)]="drugL.SupplierId">
+                                            <input type="text" class="form-control" name="supplierId"  [(ngModel)]="drugL.supplierId">
                                             
                                         </div>
                     
@@ -130,34 +135,111 @@
                     <tbody>
                         <tr *ngFor="let drug of drugs">
                             <td>
-                                {{drug.DrugId}}
+                                {{drug.drugId}}
                             </td>
                             <td>
-                                {{drug.DrugName}}
+                                {{drug.drugName}}
                             </td>
                             <td>
-                                {{drug.DrugQuantity}}
+                                {{drug.drugQuantity}}
                             </td>
                             <td>
-                                {{drug.DrugPrice}}
+                                {{drug.drugPrice}}
                             </td>
                             <td>
-                                {{drug.ExpDate}}
+                                {{drug.expDate}}
                             </td>
                             <td>
-                                {{drug.SupplierId}}
+                                {{drug.supplierId}}
                             </td>
                             <td>
-                                <button type="button" id=edit [routerLink]="['/home']"><i
+                                <button type="button" id=edit data-bs-toggle="modal" data-bs-target="#exampleModal1"(click)="onUpdate(drug)"><i
                                         class="fa-solid fa-pen-to-square"></i></button>
-                                <button type="button" id=delete [routerLink]="['/home']"><i
-                                        class="fa-solid fa-person-circle-minus"></i></button>
+                                <button type="button" id=delete (click)="onDelete(drug)"><i
+                                        class="fa-solid fa-person-circle-minus" ></i></button>
                             </td>
 
                         </tr>
                     </tbody>
 
                 </table>
+                
+
+            </div>
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Drug</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+
+
+
+                            <form method="post" #form="ngForm" (ngSubmit)="updatedrug(drugL)">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="form-label">DrugId</label>
+                                    <input type="text" class="form-control" name="drugId" [(ngModel)]="drugL.drugId" 
+                                    value="{{drugL.drugId}}">
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="drugName" [(ngModel)]="drugL.drugName" 
+                                    value="{{drugL.drugName}}">
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="form-label">Quantity</label>
+                                    <input type="text" class="form-control" name="drugQuantity" [(ngModel)]="drugL.drugQuantity"
+                                    value="{{drugL.drugQuantity}}">
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="form-label">Expiry Date</label>
+                                    <input type="date" class="form-control" name="expDate" [(ngModel)]="drugL.expDate"
+                                    value="{{drugL.expDate}}">
+                                
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="form-label">Mft Date</label>
+                                    <input type="date" class="form-control" name="mfdDate" [(ngModel)]="drugL.mfdDate"
+                                    value="{{drugL.mfdDate}}">
+                                
+                                </div>
+            
+            
+                                <div class="form-group">
+                                    <label for="validationCustom05" class="form-label">price</label>
+                                    <input type="text" class="form-control" name="drugPrice" [(ngModel)]="drugL.drugPrice"
+                                    value="{{drugL.drugPrice}}">
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom05" class="form-label">Supplier Id</label>
+                                    <input type="text" class="form-control" name="supplierId"  [(ngModel)]="drugL.supplierId"
+                                    value="{{drugL.supplierId}}">
+                                    
+                                </div>
+            
+                                <div class="modal-footer">
+                                    
+                                    <button type="submit" class="btn btn-primary">Update changes</button>
+                                </div>
+                            </form>
+
+
+
+
+            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

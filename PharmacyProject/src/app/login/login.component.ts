@@ -33,13 +33,13 @@ login:Login;
   }
 
   OnSubmit(form: NgForm) {
-    console.log(form.value);
+   // console.log(form.value);
     if(form.value.role=='Doctor'){
     this.loginservice.userlogin(form.value).subscribe(
       (data: any) => {  
         localStorage.setItem('token',data.token);
       
-        this.router.navigateByUrl('/admindrug');
+        this.router.navigateByUrl('/user');
 
       });
     }else if(form.value.role=='Admin'){
@@ -50,7 +50,7 @@ login:Login;
           this.router.navigateByUrl('/admin');
   
         });
-
+this.toastr.success("Logined in Successfully!!")
 }
 }
 }
