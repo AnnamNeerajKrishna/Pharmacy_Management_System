@@ -29,7 +29,16 @@
                                 <h4>Order Id</h4>
                             </th>
                             <th>
+                                <h4>Doctor Id</h4>
+                            </th>
+                            <th>
                                 <h4>Drug Id</h4>
+                            </th>
+                            <th>
+                                <h4>Drug Name</h4>
+                            </th>
+                            <th>
+                                <h4>Drug Price</h4>
                             </th>
                             <th>
                                 <h4>Quantity</h4>
@@ -37,12 +46,10 @@
                             <th>
                                 <h4>Total Amount</h4>
                             </th>
-                            <th>
-                                <h4>Drug Name</h4>
-                            </th>
-                            <th>
+                           
+                          <!--   <th>
                                 <h4>Expiry Date</h4>
-                            </th>
+                            </th> -->
                             <th>
                                 <h4>Action</h4>
                             </th>
@@ -50,28 +57,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let number of Orders">
                             <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                                <button type="button" class="confirm" [routerLink]="['/home']">Confirm</button>
+                                {{number.orderId}}
                                 
+
+                            </td>
+                            <td>
+                                {{number.doctorId}}
+
+                            </td>
+                            <td>
+                                {{number.drugId}}
+
+                            </td>
+
+                            <td>
+                                {{number.drugsName}}
+
+                            </td>
+                            <td>
+                                {{number.drugPrice}}
+
+                            </td>
+                            <td>
+                                {{number.drugQuantity}}
+
+                            </td>
+                            
+                            <td>
+                                {{number.totalAmount}}
+
+                            </td>
+                            
+                            <td>
+                                <button type="button" class="confirm" [routerLink]="['/admin']">Confirm</button>
+                                <button type="button" class="confirm" [routerLink]="['/admin']">Decline</button>
+                             
                             </td>
 
                         </tr>

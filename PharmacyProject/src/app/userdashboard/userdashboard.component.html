@@ -5,8 +5,9 @@
       </div>
       <div class="col-md-2">
         <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
-          class="btn btn-primary" (click)="LogOut()">Logout</button>
-        <button type="button" [routerLink]="['/home']"><i class="fa-solid fa-cart-plus"></i></button>
+          class="btn btn-primary" (click)="LogOut()">Logout
+        </button>
+        <button type="button" [routerLink]="['/cart']"><i class="fa-solid fa-cart-plus"></i></button>
   
       </div>
     </div>
@@ -18,10 +19,7 @@
         <table class="elementsContainer">
           <tr>
             <td>
-              <input type="text" placeholder="Search Drug" class="Search">
-            </td>
-            <td>
-              <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
+              <input type="text" placeholder="Search Drug" class="Search" [(ngModel)]="Search">
             </td>
           </tr>
         </table>
@@ -57,7 +55,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let number of DrugList">
+            <tr *ngFor="let number of DrugList | filter:Search">
               <td>
                 {{number.drugId}}
               </td>
@@ -74,7 +72,7 @@
                 {{number.drugPrice}}
               </td>
               <td>
-                <button type="button" [routerLink]="['/home']"><i class="fa-solid fa-cart-plus"></i></button>
+                <button type="button" (click)="SendDrug(number)"><i class="fa-solid fa-cart-plus"></i></button>
               </td>
             </tr>
           </tbody>

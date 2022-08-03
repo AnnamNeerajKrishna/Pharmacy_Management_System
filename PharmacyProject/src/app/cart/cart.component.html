@@ -1,0 +1,108 @@
+<!-- header starts from here-->
+<div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+    <div class="row">
+      <div class="col-md-10">
+        <h1 style="text-align: center;  color: black; margin-left: 30px;">Cart Page</h1>
+      </div>
+      <div class="col-md-2">
+        <button type="button" [routerLink]="['/user']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary">Back</button>
+        <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary" (click)="onLogout()">Logout</button>
+        <!--<img class="logo" style="width: 70px; height: 50px;" src="../assets/images/login.jpg" alt="">-->
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  <!-- cart starts from here-->
+  <div class="container px-3 my-5 clearfix">
+    <!-- Shopping cart table -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Shopping Cart</h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered m-0">
+            <thead>
+              <tr>
+                <th>
+                  <h4>DrugId</h4>
+                </th>
+                <th>
+                  <h4>DrugName</h4>
+                </th>
+                <th>
+                  <h4>Quantity</h4>
+                </th>
+                <th>
+                  <h4>Expiry Date</h4>
+                </th>
+                <th>
+                  <h4>price</h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let number of DrugDetail">
+                <td>
+                  {{number.drugId}}
+                </td>
+                <td>
+                  {{number.drugName}}
+                </td>
+                <td>
+                  <input type="number"[(ngModel)]="number.drugQuantity">
+                  
+                </td>
+                <td>
+                  {{number.expDate}}
+                </td>
+                <td>
+
+                  {{number.drugPrice*number.drugQuantity}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- / Shopping cart table -->
+  
+        <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+  
+          <div class="d-flex">
+  
+            <div class="float-right">
+              <br>
+
+              <p align="right">
+      
+                <button class="btn btn-info btn-lg float-left" (click)="totalprice()">Total Amount:   <strong>{{total}}</strong></button>
+      
+                <br>
+              </p>
+      
+            </div>
+          </div>
+
+  
+        <div class="container">
+          <button class="btn btn-success btn-lg float-right" type="submit"[routerLink]="['/user']" (click)="AddOrders(DrugDetail)" >Check out</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--footer starts from here-->
+  <div class="Container" id="footer"
+    style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+    <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
+          here..</strong></span></footer>
+  </div>

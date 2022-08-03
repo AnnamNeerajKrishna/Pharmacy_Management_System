@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DoctorSignUpService } from './Shared/doctor-sign-up.service';
 import { ToastrModule } from 'ngx-toastr';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { ToastrModule } from 'ngx-toastr';
     AdmindashboardComponent,
     SupplierComponent,
     AdmindrugsComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    Ng2SearchPipeModule
     
   ],
   providers: [DoctorSignUpService,LoginService,PharmacyServiceService,AuthGuard/*{
