@@ -13,8 +13,8 @@ namespace Pharmacy_Management_System.Services
         }
         public string AddOrder(Orders order)
         {
-            _order.AddOrder(order);
-            return "Order is Successfully Added";
+            return _order.AddOrder(order);
+            
         }
         public void DeleteOrder(int id)
         {

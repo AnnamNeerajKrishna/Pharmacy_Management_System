@@ -19,7 +19,7 @@
                 <table id="elementsContainer" class="col-md-8">
                     <tr>
                         <td>
-                            <input type="text" placeholder="Search Drug" class="Search">
+                            <input type="text" placeholder="Search Drug" class="Search" [(ngModel)]="Search">
                         </td>
                         <td>
                             <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
@@ -112,7 +112,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let supplier of Suppliers">
+                        <tr *ngFor="let supplier of Suppliers | filter: Search">
                         
                             <td>
                                 {{supplier.supplierId}}

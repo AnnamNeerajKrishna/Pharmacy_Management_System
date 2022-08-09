@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class SupplierComponent implements OnInit {
 
   public Suppliers:Suppliers[]=[];
-
+  Search:any;
   
 
 

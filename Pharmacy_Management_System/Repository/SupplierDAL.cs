@@ -8,6 +8,11 @@ namespace Pharmacy_Management_System.Repository
     public class SupplierDAL : ISupplierRepository
     {
         private readonly PharmacyContextDb _db;
+
+        public SupplierDAL()
+        {
+        }
+
         public SupplierDAL(PharmacyContextDb db)
         {
             _db = db;

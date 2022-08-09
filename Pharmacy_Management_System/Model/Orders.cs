@@ -37,7 +37,7 @@ namespace Pharmacy_Management_System.Model
         public double TotalAmount { get; set; }
 
 
-        public bool IsPicked { get; set; }
+        public string IsPicked { get; set; }
     }
 
     

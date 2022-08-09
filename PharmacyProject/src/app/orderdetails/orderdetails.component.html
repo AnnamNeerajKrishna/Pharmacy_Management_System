@@ -46,6 +46,9 @@
                             <th>
                                 <h4>Total Amount</h4>
                             </th>
+                            <th>
+                                <h4>PickUp Date</h4>
+                            </th>
                            
                           <!--   <th>
                                 <h4>Expiry Date</h4>
@@ -53,54 +56,46 @@
                             <th>
                                 <h4>Action</h4>
                             </th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let number of Orders">
                             <td>
                                 {{number.orderId}}
-                                
-
                             </td>
                             <td>
                                 {{number.doctorId}}
-
                             </td>
                             <td>
                                 {{number.drugId}}
 
                             </td>
-
                             <td>
                                 {{number.drugsName}}
-
                             </td>
                             <td>
                                 {{number.drugPrice}}
-
                             </td>
                             <td>
                                 {{number.drugQuantity}}
 
                             </td>
-                            
                             <td>
                                 {{number.totalAmount}}
-
                             </td>
-                            
                             <td>
-                                <button type="button" class="confirm" [routerLink]="['/admin']">Confirm</button>
-                                <button type="button" class="confirm" [routerLink]="['/admin']">Decline</button>
-                             
+                                {{number.pickupDate}}
                             </td>
-
+                            <td>
+                                <button type="button" class="confirm" (click)="updateQuantity(number)">Confirm</button>
+                                <button type="button" class="confirm" (click)="declineorder(number)">Decline</button> 
+                            </td>
                         </tr>
                     </tbody>
-
                 </table>
             </div>
+
+      
         </div>
 
     </div>

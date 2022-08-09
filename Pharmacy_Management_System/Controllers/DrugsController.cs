@@ -27,6 +27,7 @@ namespace Pharmacy_Management_System.Controllers
         [HttpGet]
         public IActionResult GetDrugDetails()
         {
+
             List<Drugs> drugs;
             drugs = _context.GetAllDrugs();
             return Ok(drugs);

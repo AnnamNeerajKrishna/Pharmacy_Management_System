@@ -10,8 +10,8 @@ using Pharmacy_Management_System;
 namespace Pharmacy_Management_System.Migrations
 {
     [DbContext(typeof(PharmacyContextDb))]
-    [Migration("20220731165212_Initial")]
-    partial class Initial
+    [Migration("20220803162130_PlacedOrders")]
+    partial class PlacedOrders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,8 +105,8 @@ namespace Pharmacy_Management_System.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(25)");
 
-                    b.Property<bool>("IsPicked")
-                        .HasColumnType("bit");
+                    b.Property<string>("IsPicked")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PickupDate")
                         .HasColumnType("datetime2");

@@ -18,17 +18,30 @@ export class OrderService {
   AddOrders(order: Order): Observable<Order> {
     return this.http.post<Order>(this.rootUrl + '/api/Orders', order);
   }
-
+/* 
+Deleting Orders
   DeleteOrder(id: number): Observable<Order> {
     return this.http.delete<Order>(
-      this.rootUrl + '/api/Order/DeleteOrder/{id}' + id
+      this.rootUrl + '/api/Orders/' + id
     );
   }
-
-  UpdateOrder(id: number, order: Order): Observable<Order> {
+ */
+  UpdateOrder( order : Order): Observable<Order> {
     return this.http.put<Order>(
-      this.rootUrl + '/api/Order/EditOrder/{id}' + id,
-      order
+      this.rootUrl + '/api/Orders/' + order.orderId, order
     );
   }
+  QuantityChange(drug:Drugs):Observable<Drugs>{
+    return this.http.put<Drugs>(
+      this.rootUrl+'/api/Drugs/'+drug.drugId,drug
+    );
+  }
+  GetDrug(drugId :any):Observable<Drugs>{
+    return this.http.get<Drugs>(
+      this.rootUrl+'/api/Drugs/'+drugId
+    );
+
+  }
+ 
+
 }

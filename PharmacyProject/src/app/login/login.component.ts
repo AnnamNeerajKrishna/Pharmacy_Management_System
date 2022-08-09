@@ -39,8 +39,8 @@ login:Login;
       (data: any) => {  
         localStorage.setItem('token',data.token);
         //localStorage.setItem('items',form.value);
+  
         localStorage.setItem('Id',form.value.EmailID)
-      
         this.router.navigateByUrl('/user');
 
       });

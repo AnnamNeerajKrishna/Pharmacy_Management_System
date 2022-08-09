@@ -1,10 +1,13 @@
+import { Order } from './../Models/order';
+import { Doctor } from './../Shared/doctor';
+import { MailToDoctorService } from './../Shared/mail-to-doctor.service';
 import { ToastrService } from 'ngx-toastr';
 import { OrderService } from './../Shared/order.service';
 import { PharmaycartService } from './../Shared/pharmaycart.service';
 import { Router } from '@angular/router';
 import { Drugs } from './../Models/drugs';
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../Models/order';
+//import { Order } from '../Models/order';
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +16,15 @@ import { Order } from '../Models/order';
 })
 export class CartComponent implements OnInit {
 DrugDetail:Drugs[]=[];
+ordermail:Order[]=[];
+doc:Doctor;
 total=0
-  constructor(private router:Router,private cart:PharmaycartService,
-    private order:OrderService,private orderservice:OrderService,private toaster:ToastrService) 
+  constructor(private router:Router,
+    private cart:PharmaycartService,
+    private order:OrderService,
+    private orderservice:OrderService,
+    private email:MailToDoctorService
+    ,private toaster:ToastrService) 
   { this.GetDrugData()}
 user:any;
 
@@ -29,7 +38,7 @@ OrderL: Order = {
   drugQuantity: 0,
   pickupDate: '',
   totalAmount: 0,
-  isPicked: false,
+  isPicked: ''
 };
 docid:any=localStorage.getItem('Id');
 
@@ -66,15 +75,26 @@ docid:any=localStorage.getItem('Id');
         (this.OrderL.drugQuantity = x.drugQuantity),
         (this.OrderL.pickupDate = new Date().toISOString());
       this.OrderL.totalAmount = x.drugPrice * x.drugQuantity;
-      this.OrderL.isPicked = false;
+      this.OrderL.isPicked = "Hold";
+     
 
       console.log(this.OrderL);
 
       this.orderservice.AddOrders(this.OrderL).subscribe((data) => {
         console.log(data);
+        
+        this.ordermail.push(data);
+        console.log(this.ordermail);
+        if(this.ordermail.length==druglst.length){
+          this.email.SendMail(this.ordermail).subscribe((data)=>
+          console.log(data)
+          );
+        }
       });
+      
     }
     this.toaster.success('Your order was placed');
+    this.toaster.success('Check Mail');
 
     //function to delay the code for 3 seconds to show the message
     function delay(time: any) {
@@ -82,12 +102,16 @@ docid:any=localStorage.getItem('Id');
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-
-    //this.router.navigate(['/user']);
+    
+    //console.log(this.ordermail);
+    
+    
   }
-  onLogout(){
+  
+ onLogout(){
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
   
   }
+
 }

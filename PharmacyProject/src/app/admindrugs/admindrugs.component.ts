@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmindrugsComponent implements OnInit {
   public drugs:Drugs[]=[];
-
+  Search:any;
 
   drugL:Drugs={
     drugId: 0,

@@ -103,8 +103,8 @@ namespace Pharmacy_Management_System.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(25)");
 
-                    b.Property<bool>("IsPicked")
-                        .HasColumnType("bit");
+                    b.Property<string>("IsPicked")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PickupDate")
                         .HasColumnType("datetime2");

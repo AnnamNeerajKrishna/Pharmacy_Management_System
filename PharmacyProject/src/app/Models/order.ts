@@ -7,5 +7,5 @@ export class Order {
     drugQuantity: number;
     pickupDate: string;
     totalAmount: number;
-    isPicked: boolean;
+    isPicked: string;
 }

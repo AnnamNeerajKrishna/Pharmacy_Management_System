@@ -2,7 +2,7 @@
 
 namespace Pharmacy_Management_System.Migrations
 {
-    public partial class Initial : Migration
+    public partial class PlacedOrders : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

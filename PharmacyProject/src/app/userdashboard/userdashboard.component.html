@@ -5,9 +5,9 @@
       </div>
       <div class="col-md-2">
         <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
-          class="btn btn-primary" (click)="LogOut()">Logout
+          class="btn btn-danger" (click)="LogOut()">Logout
         </button>
-        <button type="button" [routerLink]="['/cart']"><i class="fa-solid fa-cart-plus"></i></button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/cart']"><i class="fa-solid fa-cart-plus"></i> Cart</button>
   
       </div>
     </div>
@@ -72,7 +72,7 @@
                 {{number.drugPrice}}
               </td>
               <td>
-                <button type="button" (click)="SendDrug(number)"><i class="fa-solid fa-cart-plus"></i></button>
+                <button type="button" (click)="SendDrug(number)">Add To Cart <i class="fa-solid fa-cart-plus"></i></button>
               </td>
             </tr>
           </tbody>

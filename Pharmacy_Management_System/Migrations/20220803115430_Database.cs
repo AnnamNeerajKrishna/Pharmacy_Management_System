@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pharmacy_Management_System.Migrations
 {
-    public partial class DBSetup : Migration
+    public partial class Database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,7 +54,7 @@ namespace Pharmacy_Management_System.Migrations
                     DrugQuantity = table.Column<int>(type: "int", nullable: false),
                     PickupDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalAmount = table.Column<double>(type: "float", nullable: false),
-                    IsPicked = table.Column<bool>(type: "bit", nullable: false)
+                    IsPicked = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,7 +68,7 @@ namespace Pharmacy_Management_System.Migrations
                     SupplierId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SupplierName = table.Column<string>(type: "varchar(25)", nullable: false),
-                    EmailId = table.Column<string>(type: "varchar(35)", nullable: false),
+                    EmailID = table.Column<string>(type: "varchar(35)", nullable: false),
                     Contact = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DrugAvailable = table.Column<string>(type: "varchar(25)", nullable: false)
                 },

@@ -65,7 +65,7 @@ namespace Pharmacy_Management_System.Controllers
                 return BadRequest();
             }
             _context.UpdateOrder(id, orders);
-            return Ok("Updated Successfully");
+            return Ok(orders);
         }
 
         // POST: api/Orders
@@ -74,7 +74,7 @@ namespace Pharmacy_Management_System.Controllers
         public IActionResult PostOrders(Orders order)
         {
             _context.AddOrder(order);
-            return Ok("New Order is Been Added");
+            return Ok(order);
         }
 
         // DELETE: api/Orders/5
