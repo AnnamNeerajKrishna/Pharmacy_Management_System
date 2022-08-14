@@ -1,3 +1,5 @@
+<div class="start" style=" overflow: hidden;">
+
 <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
     <div class="row">
         <div class="col-md-10">
@@ -5,8 +7,9 @@
         </div>
         <div class="col-md-2">
             <button class="btn btn-danger my-2 my-sm-0"(click)="onLogout()">LogOut</button>
+
             <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
-                class="btn btn-primary">back</button>
+                class="btn btn-secondary">Back</button>
 
         </div>
     </div>
@@ -16,7 +19,7 @@
 
 
 
-<div class="rowcontent">
+<div class="rowcontent" style="">
     <div class="container">
         <div class="row content">
             <div class="boxContainer">
@@ -246,8 +249,12 @@
     </div>
 
 </div>
-<div class="Container" style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
-    <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
-                here..</strong></span></footer>
+<!--footer starts from here-->
+<div class="Container" id="footer"
+style="color:black; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+<footer><strong>Pharmacy Management System - Contact:- vtu14698@veltech.vtu.in</strong>
+</footer>
 </div>
 
+
+</div>

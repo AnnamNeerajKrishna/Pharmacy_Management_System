@@ -24,5 +24,6 @@ namespace Pharmacy_Management_System.Model
         [Required]
         [Column(TypeName = "varchar(25)")]
         public string DrugAvailable { get; set;}
+       // public Drugs 
     }
 }

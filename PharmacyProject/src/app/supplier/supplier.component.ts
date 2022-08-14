@@ -60,7 +60,7 @@ export class SupplierComponent implements OnInit {
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-    window.location.reload();
+    location.reload();
   }
   
 

@@ -1,108 +1,111 @@
-<div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
-    <div class="row">
-        <div class="col-md-10">
-            <h1 style="color: black; text-align: center; margin-left: 30px;">Order Details</h1>
-        </div>
-        <div class="col-md-2">
-            <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
-                class="btn btn-primary">Logout</button>
-            <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
-                class="btn btn-primary">back</button>
-
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<div class="rowcontent">
-    <div class="container">
-        <div class="row content">
-
-            <div class="drugstable">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h4>Order Id</h4>
-                            </th>
-                            <th>
-                                <h4>Doctor Id</h4>
-                            </th>
-                            <th>
-                                <h4>Drug Id</h4>
-                            </th>
-                            <th>
-                                <h4>Drug Name</h4>
-                            </th>
-                            <th>
-                                <h4>Drug Price</h4>
-                            </th>
-                            <th>
-                                <h4>Quantity</h4>
-                            </th>
-                            <th>
-                                <h4>Total Amount</h4>
-                            </th>
-                            <th>
-                                <h4>PickUp Date</h4>
-                            </th>
-                           
-                          <!--   <th>
-                                <h4>Expiry Date</h4>
-                            </th> -->
-                            <th>
-                                <h4>Action</h4>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let number of Orders">
-                            <td>
-                                {{number.orderId}}
-                            </td>
-                            <td>
-                                {{number.doctorId}}
-                            </td>
-                            <td>
-                                {{number.drugId}}
-
-                            </td>
-                            <td>
-                                {{number.drugsName}}
-                            </td>
-                            <td>
-                                {{number.drugPrice}}
-                            </td>
-                            <td>
-                                {{number.drugQuantity}}
-
-                            </td>
-                            <td>
-                                {{number.totalAmount}}
-                            </td>
-                            <td>
-                                {{number.pickupDate}}
-                            </td>
-                            <td>
-                                <button type="button" class="confirm" (click)="updateQuantity(number)">Confirm</button>
-                                <button type="button" class="confirm" (click)="declineorder(number)">Decline</button> 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<div class="start" style="overflow-x:hidden;">
+    <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+        <div class="row">
+            <div class="col-md-10">
+                <h1 style="color: black; text-align: center; margin-left: 30px;">Order Details</h1>
             </div>
-
-      
+            <div class="col-md-2">
+                <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
+                    class="btn btn-danger">Logout</button>
+                <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
+                    class="btn btn-secondary">Back</button>
+    
+            </div>
         </div>
-
     </div>
-
-</div>
-<div class="Container" style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
-    <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
-                here..</strong></span></footer>
-</div>
-
+    
+    
+    
+    
+    
+    <div class="rowcontent">
+        <div class="container">
+            <div class="row content">
+    
+                <div class="drugstable">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4>Order Id</h4>
+                                </th>
+                                <th>
+                                    <h4>Doctor Id</h4>
+                                </th>
+                                <th>
+                                    <h4>Drug Id</h4>
+                                </th>
+                                <th>
+                                    <h4>Drug Name</h4>
+                                </th>
+                                <th>
+                                    <h4>Drug Price</h4>
+                                </th>
+                                <th>
+                                    <h4>Quantity</h4>
+                                </th>
+                                <th>
+                                    <h4>Total Amount</h4>
+                                </th>
+                                <th>
+                                    <h4>PickUp Date</h4>
+                                </th>
+                               
+                              <!--   <th>
+                                    <h4>Expiry Date</h4>
+                                </th> -->
+                                <th>
+                                    <h4>Action</h4>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let number of Orders">
+                                <td>
+                                    {{number.orderId}}
+                                </td>
+                                <td>
+                                    {{number.doctorId}}
+                                </td>
+                                <td>
+                                    {{number.drugId}}
+    
+                                </td>
+                                <td>
+                                    {{number.drugsName}}
+                                </td>
+                                <td>
+                                    {{number.drugPrice}}
+                                </td>
+                                <td>
+                                    {{number.drugQuantity}}
+    
+                                </td>
+                                <td>
+                                    {{number.totalAmount}}
+                                </td>
+                                <td>
+                                    {{number.pickupDate}}
+                                </td>
+                                <td>
+                                    <button type="button" class="confirm" (click)="updateQuantity(number)">Confirm</button>
+                                    <button type="button" class="confirm" (click)="declineorder(number)">Decline</button> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+          
+            </div>
+    
+        </div>
+    
+    </div>
+    <!--footer starts from here-->
+    <div class="Container" id="footer"
+    style="color:black; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+    <footer><strong>Pharmacy Management System - Contact:- vtu14698@veltech.vtu.in</strong>
+    </footer>
+    
+    </div>

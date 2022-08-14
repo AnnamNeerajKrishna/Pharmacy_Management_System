@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Drugs } from '../Models/drugs';
 import { PharmaycartService } from '../Shared/pharmaycart.service';
 import { Order } from '../Models/order';
+import { MailToDoctorService } from '../Shared/mail-to-doctor.service';
 
 @Component({
   selector: 'app-orderdetails',
@@ -14,7 +15,8 @@ export class OrderdetailsComponent implements OnInit {
  
   constructor(private order:PharmaycartService,
     private item:OrderService,
-    private toaster:ToastrService) 
+    private toaster:ToastrService,
+    private mail:MailToDoctorService) 
     { }
 Orders:Order[]=[];
 drug:Drugs;
@@ -66,25 +68,19 @@ drugUp:Drugs={
     this.item.UpdateOrder(this.OrderUp).subscribe((data)=>{
       console.log(this.OrderUp);
     this.toaster.success("Order Declined")
+    location.reload();
 
     });
 
 
   }
   confirmorder(order:Order){
-    this.OrderUp.orderId=order.orderId;
-    this.OrderUp.doctorId=order.doctorId;
-    this.OrderUp.drugId=order.drugId;
-    this.OrderUp.drugsName=order.drugsName;
-    this.OrderUp.drugPrice=order.drugPrice;
-    this.OrderUp.drugQuantity=order.drugQuantity;
-    this.OrderUp.totalAmount=order.totalAmount;
-    this.OrderUp.pickupDate=order.pickupDate;
-    this.OrderUp.isPicked="Approved";
-    this.item.UpdateOrder(this.OrderUp).subscribe((data)=>
+    
+    order.isPicked="Approved";
+    this.item.UpdateOrder(order).subscribe((data)=>
     {
-      console.log(this.OrderUp);
-     
+      console.log(data);
+          
     }); 
 
     
@@ -103,21 +99,27 @@ drugUp:Drugs={
     this.item.GetDrug(order.drugId).subscribe((data)=>
     {
       this.drug=data;
-      this.drug.drugQuantity=this.drug.drugQuantity-order.drugQuantity;
+      
    
-    if(this.drug.drugQuantity>this.OrderUp.drugQuantity){
-    this.item.QuantityChange(this.drug).subscribe((data)=>
+    if(this.drug.drugQuantity>order.drugQuantity)
     {
-      console.log(data);
-     
+      console.log(this.drug.drugQuantity);
+      
+      this.drug.drugQuantity=this.drug.drugQuantity-order.drugQuantity;
+      this.item.QuantityChange(this.drug).subscribe((data)=>
+      {
+        console.log(data);
+      });
       this.confirmorder(order);
       this.toaster.success("Order Confirmed")
-
-    });
-  }
-  else{
-    this.toaster.error("Unable to place the order");
-  }
+      this.toaster.success("Mail Sent")
+      this.mail.SendingMailByAdmin(order)
+      location.reload();
+    }
+    else
+    {
+      this.toaster.error("Unable to place the order");
+    }
       
     });
   }

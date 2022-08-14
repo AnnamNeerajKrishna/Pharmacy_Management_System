@@ -17,4 +17,7 @@ onLogout(){
   this.route.navigateByUrl('/login');
 
 }
+Sales(){
+  
+}
 }

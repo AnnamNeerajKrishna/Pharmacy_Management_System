@@ -7,6 +7,7 @@
 .body .row{
     
     background-size: cover;
+    
 }
 .logo{
     width:70px;
@@ -35,40 +36,57 @@
 }
 #login{
     position: relative;
-    top:5px;
+    top:2px;
     border-radius: 5px;
     width:75px;
-    height:37px;
+    height:35px;
     margin: 10px;
     color:blue;
     background-color: white;
     border-color: blue;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
 }
 #login:hover{
     color: white;
-        background-color:blue;
+        background-color: green;
         border-color:white;
 }
 
 #signup {
     position: relative;
-        top: 5px;
+        top: 2px;
     border-radius: 5px;
     width: 80px;
-    height: 37px;
+    height: 35px;
     margin: 10px;
     color: blue;
     background-color: white;
     border-color: blue;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
     
 }
 
 #signup:hover {
     color: white;
-    background-color: blue;
+    background-color: green;
     border-color: white;
 }
+.space {
+    width: 5px;
+    height: auto;
+    display: inline-block;
+  }
+ 
+#footer {
+    position: fixed;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    width: 100%;
+    /* Height of the footer*/
+    height: 50px;
+    background: grey;
+    overflow: hidden;
+  }
+ 

@@ -1,3 +1,4 @@
+
 import { HttpError } from './Shared/http-error';
 import { PharmacyServiceService } from './Shared/pharmacy-service.service';
 /* import { TokenInterceptorService } from './Shared/token-interceptor.service';
@@ -24,6 +25,7 @@ import { DoctorSignUpService } from './Shared/doctor-sign-up.service';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
+import { SalesComponent } from './sales/sales.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { CartComponent } from './cart/cart.component';
     SupplierComponent,
     AdmindrugsComponent,
     OrderdetailsComponent,
-    CartComponent
+    CartComponent,
+    SalesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +54,11 @@ import { CartComponent } from './cart/cart.component';
     
   ],
   providers: [DoctorSignUpService,LoginService,PharmacyServiceService,AuthGuard
-    ,{
+    ,/* {
       provide:HTTP_INTERCEPTORS,
-      useClass:HttpError,
+      useClass:ErrorHandel,
       multi:true 
-  }],
+  } */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,11 @@ body{
     align-items: center;
 
 }
-
+.space{
+    width: 10px;
+    height: auto;
+    display: inline-block;
+}
 .container{
     display:flex;
     flex-wrap: wrap;
@@ -105,3 +109,13 @@ body{
   
     box-shadow: rgba(0, 0, 0, .2);
 }
+
+#footer {
+    position: fixed;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    width: 100%;
+    /* Height of the footer*/
+    height: 50px;
+    background: grey;
+  }

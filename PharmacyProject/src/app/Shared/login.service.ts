@@ -1,6 +1,6 @@
 import { Login } from './login';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,25 @@ export class LoginService {
   
   constructor(private http:HttpClient){}
 
-  userlogin(login : Login){
+  userlogin(login : Login)
+  {
     const body: Login = {
       EmailID: login.EmailID,
       Password: login.Password      
     }
-    return this.http.post(this.rootUrl + '/api/DoctorLogin', body);
+    return this.http.post(this.rootUrl 
+      + '/api/DoctorLogin', body)    
   }
-  Adminlogin(login : Login){
+  Adminlogin(login : Login)
+  {
     const body: Login = {
       EmailID: login.EmailID,
       Password: login.Password      
     }
     return this.http.post(this.rootUrl + '/api/AdminLogin', body);
   }
-  loggedIn(){
+  loggedIn()
+  {
     return !!localStorage.getItem('token');
   }
   /* grtToken(){

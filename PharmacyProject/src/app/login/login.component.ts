@@ -52,7 +52,8 @@ login:Login;
           this.router.navigateByUrl('/admin');
   
         });
-this.toastr.success("Logined in Successfully!!")
+
 }
+this.toastr.success("Logined in Successfully!!")
 }
 }

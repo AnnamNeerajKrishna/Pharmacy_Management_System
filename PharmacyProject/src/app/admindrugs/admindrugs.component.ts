@@ -48,16 +48,18 @@ export class AdmindrugsComponent implements OnInit {
      
         this.router.navigate(['/admindrug']);
         
-        this.getAllDrugs();    
+        this.getAllDrugs();   
+         this.toaster.success("Drug was added");
+    
       }
     )
-    this.toaster.success("Drug was added");
+    
     function delay(time: any) {
       return new Promise((resolve) => setTimeout(resolve, time));
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-    window.location.reload();
+  location.reload();
   }
   onDelete(id:Drugs){
     this.pharmacyService.deleteDrugs(id.drugId).subscribe(
@@ -74,7 +76,7 @@ export class AdmindrugsComponent implements OnInit {
     }
 
     delay(5000).then(() => console.log('ran after 1 second1 passed'));
-    window.location.reload();
+    location.reload();
   }
   onUpdate(drug:Drugs){
     (this.drugL.drugId = drug.drugId);
@@ -100,7 +102,7 @@ this.pharmacyService.updateDrug(drug).subscribe(
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-    window.location.reload();
+    location.reload();
   }
 
   onLogout(){
@@ -108,5 +110,7 @@ this.pharmacyService.updateDrug(drug).subscribe(
     this.router.navigateByUrl('/login');
   
   }
+ 
+
 
 }

@@ -18,7 +18,7 @@ namespace Pharmacy_Management_System.Controllers
     {
         private IConfiguration _login;
         private readonly PharmacyContextDb _contextDb;
-        public DoctorLoginController(IConfiguration config,PharmacyContextDb contextDb)
+        public DoctorLoginController(IConfiguration config, PharmacyContextDb contextDb)
         {
             _login = config;
             _contextDb = contextDb;
@@ -30,15 +30,21 @@ namespace Pharmacy_Management_System.Controllers
         public IActionResult Login([FromBody] Login login)
         {
             var user = Authenticate(login);
-
-            if (user != null)
+            try
             {
-                var token = Generate(user);
-                var obj=new {Token=token};
-                return Ok(obj);
+                if (user != null)
+                {
+                    var token = Generate(user);
+                    var obj = new { Token = token };
+                    return Ok(obj);
 
+                }
             }
-            return NotFound("User Not Found");
+            catch (Exception ex)
+            {
+                return BadRequest("User Not Found"+ex);
+            }
+           return NotFound("User is invalid");
         }
 
         private string Generate(Doctor user)
@@ -68,12 +74,12 @@ namespace Pharmacy_Management_System.Controllers
             var CurrentUser = _contextDb.DoctorsDetails.FirstOrDefault(
                 c => c.EmailID.ToLower() == login.EmailID.ToLower()
                 && c.Password == login.Password);
-            if (CurrentUser != null)
-            {
-                return CurrentUser;
-            }
-            return null;
-
+           
+                if (CurrentUser != null)
+                {
+                    return CurrentUser;
+                }
+                return null;
 
         }
     

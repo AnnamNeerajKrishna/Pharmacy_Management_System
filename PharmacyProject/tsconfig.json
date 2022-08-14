@@ -23,7 +23,8 @@
       "dom"
     ],
      "strictPropertyInitialization": false,
-     "noPropertyAccessFromIndexSignature": false
+     "noPropertyAccessFromIndexSignature": false,
+     "noImplicitAny": false
 
 
   },

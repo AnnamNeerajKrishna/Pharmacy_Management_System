@@ -1,0 +1,162 @@
+<div class="start" style="overflow-x:hidden;">
+<!-- header starts from here-->
+<div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+  <div class="row">
+    <div class="col-md-10">
+      <h1 style="text-align: center;  color: black; margin-left: 30px;">Sales</h1>
+    </div>
+    <div class="col-md-2">
+      <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
+        class="btn btn-secondary">Back</button>
+      <button type="button" [routerLink]="['/home']" style="padding: 5px; width:80px; margin: 10px;"
+        class="btn btn-danger" (click)="LogOut()">Logout</button>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row content">
+    <div class="boxContainer">
+      <table class="elementsContainer">
+        <tr>
+          <td>
+            <input type="text" name="search" [(ngModel)]="searchText" placeholder="Filter Sales" class="Search">
+          </td>
+          <!--<td>
+        <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
+      </td>-->
+
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- cart starts from here-->
+<div class="container px-3 my-5 clearfix">
+  <!-- Shopping cart table -->
+  <div class="card">
+    <div class="card-header">
+      <h2 align="center">Sales Report</h2>
+    </div>
+
+    <br>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered m-0" id="PDFbtnDiv">
+          <thead>
+            <tr>
+              <th>
+                <h4>DrugId</h4>
+              </th>
+              <th>
+                <h4>Drug Name</h4>
+              </th>
+              <th>
+                <h4>Doctor Name</h4>
+              </th>
+              <th>
+                <h4>Order Id</h4>
+              </th>
+              <th>
+                <h4>Order Date</h4>
+              </th>
+              <th>
+                <h4>Price</h4>
+              </th>
+              <th>
+                <h4>Quantity</h4>
+              </th>
+              <th>
+                <h4>Total Price</h4>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let number of DrugDetail | filter:searchText">
+              <td>
+                {{number.drugId}}
+              </td>
+              <td>
+                {{number.drugsName}}
+              </td>
+              <td>
+                {{number.doctorId}}
+              </td>
+              <td>
+                {{number.orderId}}
+              </td>
+              <td>
+                {{number.pickupDate.slice(0, 10)}}
+              </td>
+              <td>
+                {{number.drugPrice}}
+              </td>
+              <td>
+                {{number.drugQuantity}}
+              </td>
+              <td>
+                {{number.drugPrice*number.drugQuantity}}
+              </td>
+
+            </tr>
+          </tbody>
+          <br>
+
+          <h4 align="right">Total Sales Amount : {{TotalSalesAmount}}</h4>
+
+        </table>
+      </div>
+
+      <!-- / Shopping cart table -->
+
+      <div class=" d-flex flex-wrap justify-content-between align-items-center pb-4">
+
+        <div class="d-flex">
+        </div>
+      </div>
+
+      <!-- <div class="float-right">
+
+        <h4 align="right">Total Sales Amount : {{TotalSalesAmount}}</h4>
+
+      </div>-->
+
+
+
+      <!--<div class="float-right">
+        <p align="right">
+          <button class="btn btn-success btn-lg float-left" type="submit">Check
+            out</button>
+        </p>
+      </div>-->
+
+      <div class="float-right">
+        <p align="right">
+          <button class="button-10" id="salesdwnldbtn" role="button" (click)="PDFbtn()"><strong>DOWNLOAD
+              REPORT</strong></button>
+        </p>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!--footer starts from here-->
+<!-- <div class="Container" id="footer"
+  style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+  <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
+        here..</strong></span></footer>
+</div> -->
+</div>

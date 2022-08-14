@@ -15,6 +15,11 @@ export class MailToDoctorService {
   SendMail(order:any){
     return this.http.post(this.rootUrl + '/api/Email/SendingEmail',order);
   }
+  SendingMailByAdmin(order:any){
+    return this.http.post(this.rootUrl + '/api/Email/SendingMailByAdmin',order);
+
+  }
+
 
 }
 

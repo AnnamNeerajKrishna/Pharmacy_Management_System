@@ -7,7 +7,7 @@ describe('SupplierComponent', () => {
   let fixture: ComponentFixture<SupplierComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({ 
       declarations: [ SupplierComponent ]
     })
     .compileComponents();
@@ -20,4 +20,5 @@ describe('SupplierComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pharmacy_Management_System.Migrations
 {
-    public partial class Database : Migration
+    public partial class one : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,24 +21,6 @@ namespace Pharmacy_Management_System.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DoctorsDetails", x => x.DoctorId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DrugDetails",
-                columns: table => new
-                {
-                    DrugId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DrugName = table.Column<string>(type: "varchar(25)", nullable: false),
-                    DrugPrice = table.Column<int>(type: "int", nullable: false),
-                    DrugQuantity = table.Column<int>(type: "int", nullable: false),
-                    MfdDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ExpDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SupplierId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DrugDetails", x => x.DrugId);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,6 +58,35 @@ namespace Pharmacy_Management_System.Migrations
                 {
                     table.PrimaryKey("PK_SupplierDetails", x => x.SupplierId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "DrugDetails",
+                columns: table => new
+                {
+                    DrugId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DrugName = table.Column<string>(type: "varchar(25)", nullable: false),
+                    DrugPrice = table.Column<int>(type: "int", nullable: false),
+                    DrugQuantity = table.Column<int>(type: "int", nullable: false),
+                    MfdDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SupplierId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DrugDetails", x => x.DrugId);
+                    table.ForeignKey(
+                        name: "FK_DrugDetails_SupplierDetails_SupplierId",
+                        column: x => x.SupplierId,
+                        principalTable: "SupplierDetails",
+                        principalColumn: "SupplierId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DrugDetails_SupplierId",
+                table: "DrugDetails",
+                column: "SupplierId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

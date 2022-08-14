@@ -1,200 +1,206 @@
-<div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
-    <div class="row">
-        <div class="col-md-10">
-            <h1 style="color: black; text-align: center; margin-left: 30px;">Suppliers</h1>
-        </div>
-        <div class="col-md-2">
-            <button class="btn btn-danger my-2 my-sm-0"(click)="onLogout()">LogOut</button>
-                <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
-                            class="btn btn-primary">back</button>
-
+<div class="start" style="overflow-x: hidden;">
+    <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+        <div class="row">
+            <div class="col-md-10">
+                <h1 style="color: black; text-align: center; margin-left: 30px;">Suppliers</h1>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-danger my-2 my-sm-0"(click)="onLogout()">LogOut</button>
+                    <button type="button" [routerLink]="['/admin']" style="padding: 5px; width:80px; margin: 10px;"
+                                class="btn btn-primary">Back</button>
+    
+            </div>
         </div>
     </div>
-</div>
-
-<div class="rowcontent"  >
-    <div class="container">
-        <div class="row content">
-            <div class="boxContainer">
-                <table id="elementsContainer" class="col-md-8">
-                    <tr>
-                        <td>
-                            <input type="text" placeholder="Search Drug" class="Search" [(ngModel)]="Search">
-                        </td>
-                        <td>
-                            <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
-                        </td>
-                    </tr>
-                </table>
-                <div id="addsupplier" class="col-md-2">
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        AddSupplier
-                    </button>
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add Supplier</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" #supplierform="ngForm">
-                                        <div class="form-group">
-                                          <label for="validationCustom01" class="form-label">Name</label>
-                                          <input type="text" class="form-control" name="supplierName"
-                                            [(ngModel)]="supplieradd.supplierName">
-                    
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="validationCustom02" class="form-label">Email</label>
-                                          <input type="Email" class="form-control" name="emailID" [(ngModel)]="supplieradd.emailID">
-                    
-                                        </div>
-                    
-                    
-                                        <div class="form-group">
-                                          <label for="validationCustom05" class="form-label">contact</label>
-                                          <input type="text" class="form-control" name="contact" [(ngModel)]="supplieradd.contact ">
-                    
-                                        </div>
-                    
-                    
-                                        <div class="form-group">
-                                          <label for="validationCustom05" class="form-label">drug supplied</label>
-                                          <input type="text" class="form-control" name="drugAvailable"
-                                            [(ngModel)]="supplieradd.drugAvailable">
-                    
-                                        </div>
-                    
-                                        <div class="modal-footer">
-                                          <!-- <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a> -->
-                                          <button type="submit" class="btn btn-primary" (click)="onSubmit(supplierform)">Save
-                                            changes</button>
-                                        </div>
-                                      </form>
-
+    
+    <div class="rowcontent"  >
+        <div class="container">
+            <div class="row content">
+                <div class="boxContainer">
+                    <table id="elementsContainer" class="col-md-8">
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Search Drug" class="Search" [(ngModel)]="Search">
+                            </td>
+                            <td>
+                                <a href="#"><i class="fa-solid fa-magnifying-glass-plus" id="material-icons"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="addsupplier" class="col-md-2">
+    
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            AddSupplier
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Supplier</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" #supplierform="ngForm">
+                                            <div class="form-group">
+                                              <label for="validationCustom01" class="form-label">Name</label>
+                                              <input type="text" class="form-control" name="supplierName"
+                                                [(ngModel)]="supplieradd.supplierName">
+                        
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="validationCustom02" class="form-label">Email</label>
+                                              <input type="Email" class="form-control" name="emailID" [(ngModel)]="supplieradd.emailID">
+                        
+                                            </div>
+                        
+                        
+                                            <div class="form-group">
+                                              <label for="validationCustom05" class="form-label">contact</label>
+                                              <input type="text" class="form-control" name="contact" [(ngModel)]="supplieradd.contact ">
+                        
+                                            </div>
+                        
+                        
+                                            <div class="form-group">
+                                              <label for="validationCustom05" class="form-label">drug supplied</label>
+                                              <input type="text" class="form-control" name="drugAvailable"
+                                                [(ngModel)]="supplieradd.drugAvailable">
+                        
+                                            </div>
+                        
+                                            <div class="modal-footer">
+                                              <!-- <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a> -->
+                                              <button type="submit" class="btn btn-primary" (click)="onSubmit(supplierform)">Save
+                                                changes</button>
+                                            </div>
+                                          </form>
+    
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <br>
-        
-            <div class="drugstable">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h4>Supplier Id</h4>
-                            </th>
-                            <th>
-                                <h4>Supplier Name</h4>
-                            </th>
-                            <th>
-                                <h4>Supplier Email</h4>
-                            </th>
-                            <th>
-                                <h4>Supplier Contact</h4>
-                            </th>
-                            <th>
-                                <h4>Drug Supplied</h4>
-                            </th>
-                            <th>
-                                <h4>Action</h4>
-                            </th>
-    
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let supplier of Suppliers | filter: Search">
                         
-                            <td>
-                                {{supplier.supplierId}}
+                    </div>
+                </div>
+                <br>
+            
+                <div class="drugstable">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4>Supplier Id</h4>
+                                </th>
+                                <th>
+                                    <h4>Supplier Name</h4>
+                                </th>
+                                <th>
+                                    <h4>Supplier Email</h4>
+                                </th>
+                                <th>
+                                    <h4>Supplier Contact</h4>
+                                </th>
+                                <th>
+                                    <h4>Drug Supplied</h4>
+                                </th>
+                                <th>
+                                    <h4>Action</h4>
+                                </th>
+        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let supplier of Suppliers | filter: Search">
+                            
+                                <td>
+                                    {{supplier.supplierId}}
+        
+                                </td>
+                                <td>
+                                    {{supplier.supplierName}}
+        
+                                </td>
+                                <td>
+                                    {{supplier.emailID}}
+                                </td>
+                                <td>
+                                    {{supplier.contact}}
+                                </td>
+                                <td>
+                                    {{supplier.drugAvailable}}
+                                </td>
+                                <td>
+                                    <button type="button" id=edit data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="onUpdate(supplier)"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button type="button" id=delete (click)="onDelete(supplier)"><i class="fa-solid fa-person-circle-minus"></i></button>
+                                </td>
+        
+                            </tr>
+                        </tbody>
+        
+                    </table>
+                </div>
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update Supplier</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" #supplierform="ngForm" (ngSubmit)="updatesupplier(supplieradd)">
+                                    <div class="form-group">
+                                      <label for="validationCustom01" class="form-label">Name</label>
+                                      <input type="text" class="form-control" name="supplierName"
+                                        [(ngModel)]="supplieradd.supplierName" value="{{supplieradd.supplierName}}">
+                
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="validationCustom02" class="form-label">Email</label>
+                                      <input type="Email" class="form-control" name="emailID" [(ngModel)]="supplieradd.emailID"
+                                      value="{{supplieradd.emailID}}">
+                
+                                    </div>
+                
+                
+                                    <div class="form-group">
+                                      <label for="validationCustom05" class="form-label">contact</label>
+                                      <input type="text" class="form-control" name="contact" [(ngModel)]="supplieradd.contact"
+                                      value="{{supplieradd.contact}}">
+                
+                                    </div>
+                
+                
+                                    <div class="form-group">
+                                      <label for="validationCustom05" class="form-label">drug supplied</label>
+                                      <input type="text" class="form-control" name="drugAvailable"
+                                        [(ngModel)]="supplieradd.drugAvailable" value="{{supplieradd.drugAvailable}}">
+                
+                                    </div>
+                
+                                    <div class="modal-footer">
+                                      <!-- <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a> -->
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </form>
     
-                            </td>
-                            <td>
-                                {{supplier.supplierName}}
-    
-                            </td>
-                            <td>
-                                {{supplier.emailID}}
-                            </td>
-                            <td>
-                                {{supplier.contact}}
-                            </td>
-                            <td>
-                                {{supplier.drugAvailable}}
-                            </td>
-                            <td>
-                                <button type="button" id=edit data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="onUpdate(supplier)"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button type="button" id=delete (click)="onDelete(supplier)"><i class="fa-solid fa-person-circle-minus"></i></button>
-                            </td>
-    
-                        </tr>
-                    </tbody>
-    
-                </table>
-            </div>
-            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update Supplier</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" #supplierform="ngForm" (ngSubmit)="updatesupplier(supplieradd)">
-                                <div class="form-group">
-                                  <label for="validationCustom01" class="form-label">Name</label>
-                                  <input type="text" class="form-control" name="supplierName"
-                                    [(ngModel)]="supplieradd.supplierName" value="{{supplieradd.supplierName}}">
-            
-                                </div>
-                                <div class="form-group">
-                                  <label for="validationCustom02" class="form-label">Email</label>
-                                  <input type="Email" class="form-control" name="emailID" [(ngModel)]="supplieradd.emailID"
-                                  value="{{supplieradd.emailID}}">
-            
-                                </div>
-            
-            
-                                <div class="form-group">
-                                  <label for="validationCustom05" class="form-label">contact</label>
-                                  <input type="text" class="form-control" name="contact" [(ngModel)]="supplieradd.contact"
-                                  value="{{supplieradd.contact}}">
-            
-                                </div>
-            
-            
-                                <div class="form-group">
-                                  <label for="validationCustom05" class="form-label">drug supplied</label>
-                                  <input type="text" class="form-control" name="drugAvailable"
-                                    [(ngModel)]="supplieradd.drugAvailable" value="{{supplieradd.drugAvailable}}">
-            
-                                </div>
-            
-                                <div class="modal-footer">
-                                  <!-- <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a> -->
-                                  <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </form>
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        
         </div>
     
     </div>
-
-</div>
-<div class="Container" style="color:whitesmoke; text-align: center;  background-color: #0bc1f9; padding: 10px;">
-    <footer><span class="text-danger"><strong>This site is copyright & copy;to LTI.All rights are reserved
-                here..</strong></span></footer>
+      <!--footer starts from here-->
+      <div class="Container" id="footer"
+      style="color:black; text-align: center;  background-color: #0bc1f9; padding: 10px;">
+      <footer><strong>Pharmacy Management System - Contact:- vtu14698@veltech.vtu.in</strong>
+      </footer>
+      </div>
+      
+    
 </div>

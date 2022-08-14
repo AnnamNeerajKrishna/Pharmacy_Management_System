@@ -29,8 +29,12 @@ namespace Pharmacy_Management_System.Model
         [Required(ErrorMessage ="Please Follow the date formate (MM/DD/YYYY)")]
         public DateTime ExpDate { get; set; }
 
-        [Required (ErrorMessage ="Supplier Id should be required")]
-        [ForeignKey("Supplier")]
-        public int SupplierId { get; set; }
+        [Required(ErrorMessage = "Supplier Id should be required")]
+
+        /*Supplier Id as a Foreign Key*/
+        [ForeignKey("SupplierId")]
+        public int? SupplierId { get; set; }
+     
+        public virtual Supplier Supplier { get; set; }
     }
 }

@@ -71,10 +71,13 @@ namespace Pharmacy_Management_System.Migrations
                     b.Property<DateTime>("MfdDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SupplierId")
+                    b.Property<int?>("SupplierId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("DrugId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("DrugDetails");
                 });
@@ -142,6 +145,17 @@ namespace Pharmacy_Management_System.Migrations
                     b.HasKey("SupplierId");
 
                     b.ToTable("SupplierDetails");
+                });
+
+            modelBuilder.Entity("Pharmacy_Management_System.Model.Drugs", b =>
+                {
+                    b.HasOne("Pharmacy_Management_System.Model.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
                 });
 #pragma warning restore 612, 618
         }
