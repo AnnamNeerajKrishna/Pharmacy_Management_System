@@ -13,6 +13,7 @@ using Pharmacy_Management_System.Repository;
 
 namespace Pharmacy_Management_System.Controllers
 {
+    [Authorize(Roles = "administrator")]
     [Route("api/[controller]")]
     [ApiController]
     public class SuppliersController : ControllerBase
@@ -78,7 +79,6 @@ namespace Pharmacy_Management_System.Controllers
         // POST: api/Suppliers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        //[Authorize(Roles = "administrator")]
         public IActionResult PostSupplier(Supplier supplier)
         {
             if (!ModelState.IsValid)

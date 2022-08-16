@@ -1,3 +1,5 @@
+import { DocRoleGuard } from './auth/doc-role.guard';
+import { RoleGuard } from './auth/role.guard';
 import { SalesComponent } from './sales/sales.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
@@ -19,13 +21,13 @@ const routes: Routes = [
   {path:"about",component:AboutComponent},
   {path:"login",component:LoginComponent},
   {path:"signup",component:SignupComponent},
-  {path:"user",component:UserdashboardComponent},
-  {path:"admin",component:AdmindashboardComponent,canActivate:[AuthGuard]},
-  {path:"supplier",component:SupplierComponent,canActivate:[AuthGuard]},
-  {path:"admindrug",component:AdmindrugsComponent,canActivate:[AuthGuard]},
-  {path:"adminorders",component:OrderdetailsComponent,canActivate:[AuthGuard]},
-  {path:"cart",component:CartComponent},
-  {path:"sales",component:SalesComponent},
+  {path:"user",component:UserdashboardComponent,canActivate:[AuthGuard,DocRoleGuard]},
+  {path:"admin",component:AdmindashboardComponent,canActivate:[RoleGuard,AuthGuard]},
+  {path:"supplier",component:SupplierComponent,canActivate:[AuthGuard,RoleGuard]},
+  {path:"admindrug",component:AdmindrugsComponent,canActivate:[AuthGuard,RoleGuard]},
+  {path:"adminorders",component:OrderdetailsComponent,canActivate:[AuthGuard,RoleGuard]},
+  {path:"cart",component:CartComponent,canActivate:[AuthGuard,DocRoleGuard]},
+  {path:"sales",component:SalesComponent,canActivate:[AuthGuard,RoleGuard]},
   {path:"**",component:HomeComponent,canActivate:[AuthGuard]}
 ];
 

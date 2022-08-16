@@ -30,8 +30,7 @@ namespace Pharmacy_Management_System.Controllers
         public IActionResult Login([FromBody] Login login)
         {
             var user = Authenticate(login);
-            try
-            {
+            
                 if (user != null)
                 {
                     var token = Generate(user);
@@ -39,12 +38,9 @@ namespace Pharmacy_Management_System.Controllers
                     return Ok(obj);
 
                 }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("User Not Found"+ex);
-            }
-           return NotFound("User is invalid");
+            
+            
+           return NotFound();
         }
 
         private string Generate(Doctor user)

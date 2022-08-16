@@ -50,17 +50,17 @@ export class SupplierComponent implements OnInit {
     .subscribe(
       Response=>{
         this.router.navigate(['/supplier']);
-        
+        this.toaster.success("Supplier was added");
         this.getAllSupplier();    
       }
     )
-    this.toaster.success("Supplier was added");
-    function delay(time: any) {
+    
+     function delay(time: any) {
       return new Promise((resolve) => setTimeout(resolve, time));
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-    location.reload();
+    //location.reload();
   }
   
 
@@ -105,7 +105,7 @@ export class SupplierComponent implements OnInit {
     }
 
     delay(5000).then(() => console.log('ran after 1 second1 passed'));
-    window.location.reload();
+    location.reload();
   }
   onLogout(){
     localStorage.removeItem('token');

@@ -27,18 +27,16 @@ export class AdmindrugsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDrugs();
-    console.log(this.drugs);
+    //console.log(this.drugs);
   }
   getAllDrugs(){
     this.pharmacyService.getalldrugs()
     .subscribe(
-      response=>{
+      response=>
+      {
         this.drugs=response;
-
-  //     console.log(this.drugs);
       }
-
-    );
+  );
   }
   onSubmit(){
   
@@ -59,18 +57,18 @@ export class AdmindrugsComponent implements OnInit {
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-  location.reload();
+  ///location.reload();
   }
   onDelete(id:Drugs){
     this.pharmacyService.deleteDrugs(id.drugId).subscribe(
       res=>{
         //this.drugs=this.drugs.filter(item=>item.drugId!==id);
-        console.log(res);
+        this.toaster.success("Drug was Deleted");
         
         this.getAllDrugs();    
       }
     )
-    this.toaster.success("Drug was Deleted");
+   
     function delay(time: any) {
       return new Promise((resolve) => setTimeout(resolve, time));
     }
@@ -93,10 +91,10 @@ this.pharmacyService.updateDrug(drug).subscribe(
   res=>{
     //this.drugs=this.drugs.filter(item=>item.drugId!==id);
     console.log(res);
-    
+    this.toaster.success("Drug was Updated");
     this.getAllDrugs();    
   });
-  this.toaster.success("Drug was Updated");
+  
     function delay(time: any) {
       return new Promise((resolve) => setTimeout(resolve, time));
     }

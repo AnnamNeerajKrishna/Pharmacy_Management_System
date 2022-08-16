@@ -56,17 +56,10 @@ drugUp:Drugs={
   }
 
   declineorder(order:Order){
-    this.OrderUp.orderId=order.orderId;
-    this.OrderUp.doctorId=order.doctorId;
-    this.OrderUp.drugId=order.drugId;
-    this.OrderUp.drugsName=order.drugsName;
-    this.OrderUp.drugPrice=order.drugPrice;
-    this.OrderUp.drugQuantity=order.drugQuantity;
-    this.OrderUp.totalAmount=order.totalAmount;
-    this.OrderUp.pickupDate=order.pickupDate;
-    this.OrderUp.isPicked="Not Approved";
-    this.item.UpdateOrder(this.OrderUp).subscribe((data)=>{
-      console.log(this.OrderUp);
+   
+    order.isPicked="Not Approved";
+    this.item.UpdateOrder(order).subscribe((data)=>{
+      
     this.toaster.success("Order Declined")
     location.reload();
 

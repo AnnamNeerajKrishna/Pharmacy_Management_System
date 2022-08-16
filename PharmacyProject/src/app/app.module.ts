@@ -1,8 +1,9 @@
+import { DocRoleGuard } from './auth/doc-role.guard';
+import { RoleGuard } from './auth/role.guard';
 
 import { HttpError } from './Shared/http-error';
 import { PharmacyServiceService } from './Shared/pharmacy-service.service';
-/* import { TokenInterceptorService } from './Shared/token-interceptor.service';
- */import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { LoginService } from './Shared/login.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,13 +20,14 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
 import { SupplierComponent } from './supplier/supplier.component';
 import { AdmindrugsComponent } from './admindrugs/admindrugs.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DoctorSignUpService } from './Shared/doctor-sign-up.service';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
 import { SalesComponent } from './sales/sales.component';
+import { TokenInterceptorService } from './Shared/token-interceptor.service';
 
 
 @NgModule({
@@ -53,12 +55,12 @@ import { SalesComponent } from './sales/sales.component';
     Ng2SearchPipeModule
     
   ],
-  providers: [DoctorSignUpService,LoginService,PharmacyServiceService,AuthGuard
-    ,/* {
+  providers: [{
       provide:HTTP_INTERCEPTORS,
-      useClass:ErrorHandel,
+      useClass:TokenInterceptorService,
       multi:true 
-  } */],
+  } ,
+  DoctorSignUpService,LoginService,PharmacyServiceService,AuthGuard,RoleGuard,DocRoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

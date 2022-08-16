@@ -35,7 +35,7 @@ namespace Pharmacy_Management_System.Controllers
                 return Ok(obj);
 
             }
-            return BadRequest(new { message = "User Not Found" });
+            return BadRequest();
         }
 
         private string Generate(Admin user)

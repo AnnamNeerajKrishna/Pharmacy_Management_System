@@ -23,7 +23,7 @@ export class LoginService {
   {
     const body: Login = {
       EmailID: login.EmailID,
-      Password: login.Password      
+      Password: login.Password  ,
     }
     return this.http.post(this.rootUrl + '/api/AdminLogin', body);
   }

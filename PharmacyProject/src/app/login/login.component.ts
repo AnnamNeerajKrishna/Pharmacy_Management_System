@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-Role:string;
-login:Login;
+  Role: string;
+  login: Login;
   constructor(
     private loginservice: LoginService,
     private toastr: ToastrService,
-    private router:Router
+    private router: Router
   ) { }
   ngOnInit(): void {
     this.resetForm();
@@ -27,33 +27,36 @@ login:Login;
     this.login = {
       EmailID: '',
       Password: ''
-    
-    
+
     };
   }
 
   OnSubmit(form: NgForm) {
-   // console.log(form.value);
-    if(form.value.role=='Doctor'){
-    this.loginservice.userlogin(form.value).subscribe(
-      (data: any) => {  
-        localStorage.setItem('token',data.token);
-        //localStorage.setItem('items',form.value);
-  
-        localStorage.setItem('Id',form.value.EmailID)
-        this.router.navigateByUrl('/user');
+    // console.log(form.value);
 
+    if (form.value.role == 'Doctor') {
+        this.loginservice.userlogin(form.value).subscribe(
+          (data: any) => {
+            localStorage.setItem('token', data.token);
+            //localStorage.setItem('items',form.value);
+
+            localStorage.setItem('Id', form.value.EmailID)
+            localStorage.setItem('UserType', 'Doctor')
+            this.router.navigateByUrl('/user');
+            this.toastr.success("Logined in Successfully!!")
       });
-    }else if(form.value.role=='Admin'){
+    
+    } else if (form.value.role == 'Admin') {
       this.loginservice.Adminlogin(form.value).subscribe(
-        (data: any) => {  
-          localStorage.setItem('token',data.token);
-        
+        (data: any) => {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('UserType', 'Admin')
           this.router.navigateByUrl('/admin');
-  
+          this.toastr.success("Logined in Successfully!!")
+
         });
 
-}
-this.toastr.success("Logined in Successfully!!")
-}
+    }
+   
+  }
 }

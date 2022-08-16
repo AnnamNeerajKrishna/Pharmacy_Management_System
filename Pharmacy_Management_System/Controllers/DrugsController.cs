@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,12 @@ using Pharmacy_Management_System.Services;
 
 namespace Pharmacy_Management_System.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
+    
     [ApiController]
+    
+
     public class DrugsController : ControllerBase
     {
         private readonly DrugService _context;
@@ -76,8 +81,12 @@ namespace Pharmacy_Management_System.Controllers
         public IActionResult PostDrugs(Drugs drugs)
         {
 
-            _context.AddDrug(drugs);
-            return Ok("New Drug is Been Added");
+            var item = _context.AddDrug(drugs);
+            if (item != null)
+            {
+                return Ok("New Drug is Been Added");
+            }
+            return NotFound("Check the details");
         }
 
         // DELETE: api/Drugs/5
