@@ -29,7 +29,7 @@ export class TokenInterceptorService implements HttpInterceptor {
       catchError((errormsg:HttpErrorResponse)=>{
         console.log(errormsg);
         if(errormsg.status!=200){
-       this.toaster.error(errormsg.error.title);
+       this.toaster.error(errormsg.message);
         
        return throwError(errormsg);
         }

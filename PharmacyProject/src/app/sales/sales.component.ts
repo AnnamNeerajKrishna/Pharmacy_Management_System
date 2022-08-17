@@ -1,3 +1,4 @@
+import { Drugs } from './../Models/drugs';
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -12,7 +13,7 @@ export class SalesComponent implements OnInit {
   DrugDetail: Order[] = [];
   TotalSalesAmount: any = 0;
   searchText: any;
-
+  total=0
   constructor(private orderservice:OrderService) {}
 
   ngOnInit(): void {
@@ -31,6 +32,14 @@ export class SalesComponent implements OnInit {
         }
       }
     });
+  }
+  TotalAmount(Drugs:any){
+    for (let x of Drugs) {
+
+      this.total = this.total + x.drugQuantity * x.drugPrice;
+
+    }
+
   }
 
   PDFbtn() {

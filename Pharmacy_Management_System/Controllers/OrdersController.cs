@@ -12,7 +12,7 @@ using Pharmacy_Management_System.Services;
 
 namespace Pharmacy_Management_System.Controllers
 {
-    [Authorize(Roles = "administrator")]
+   
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -23,7 +23,7 @@ namespace Pharmacy_Management_System.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "administrator")]
         // GET: api/Orders
         [HttpGet]
         public IActionResult GetOrdersDetails()
@@ -32,7 +32,7 @@ namespace Pharmacy_Management_System.Controllers
             orders = _context.GetAllOrder().ToList();
             return Ok(orders);
         }
-
+        [Authorize(Roles = "administrator")]
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public IActionResult GetOrders(int id)
@@ -52,7 +52,7 @@ namespace Pharmacy_Management_System.Controllers
                 return Ok(item);
             }
         }
-
+        [Authorize(Roles = "administrator")]
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -69,17 +69,23 @@ namespace Pharmacy_Management_System.Controllers
             _context.UpdateOrder(id, orders);
             return Ok(orders);
         }
-
+        [Authorize]
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public IActionResult PostOrders(Orders order)
         {
-            _context.AddOrder(order);
-            return Ok(order);
+
+            var item = _context.AddOrder(order);
+            if (item != null)
+            {
+                return Ok(order);
+            }
+            return BadRequest();
         }
 
         // DELETE: api/Orders/5
+        [Authorize(Roles = "administrator")]
         [HttpDelete("{id}")]
         public IActionResult DeleteOrders(int id)
         {

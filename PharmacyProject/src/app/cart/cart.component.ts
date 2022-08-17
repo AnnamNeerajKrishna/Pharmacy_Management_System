@@ -80,12 +80,10 @@ docid:any=localStorage.getItem('Id');
         this.ordermail.push(data);
         
         if(this.ordermail.length==druglst.length){
-          this.email.SendMail(this.ordermail).subscribe((data)=>
-          console.log(data)
-         
-          );
+          this.email.SendMail(this.ordermail).subscribe((data)=>{});
           this.toaster.success('Your order was placed');
           this.toaster.success('Check Mail');
+          
         }
       });
       

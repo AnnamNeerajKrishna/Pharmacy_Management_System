@@ -67,11 +67,14 @@ drugUp:Drugs={
 
 
   }
+  orderList:Order[]=[];
   confirmorder(order:Order){
     
     order.isPicked="Approved";
     this.item.UpdateOrder(order).subscribe((data)=>
     {
+      this.orderList.push(order);
+      this.mail.SendingMailByAdmin(this.orderList).subscribe(item=>{})
       console.log(data);
           
     }); 
@@ -84,7 +87,7 @@ drugUp:Drugs={
     }
 
     delay(4000).then(() => console.log('ran after 1 second1 passed'));
-   // window.location.reload();
+   location.reload();
 
   }
   
@@ -102,12 +105,14 @@ drugUp:Drugs={
       this.item.QuantityChange(this.drug).subscribe((data)=>
       {
         console.log(data);
+       
       });
       this.confirmorder(order);
+     
       this.toaster.success("Order Confirmed")
       this.toaster.success("Mail Sent")
-      this.mail.SendingMailByAdmin(order)
-      location.reload();
+     
+         location.reload();
     }
     else
     {
