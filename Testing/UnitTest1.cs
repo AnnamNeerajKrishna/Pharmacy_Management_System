@@ -1,4 +1,4 @@
-/*using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Pharmacy_Management_System;
 using Pharmacy_Management_System.Model;
@@ -57,4 +57,4 @@ namespace Testing
 
         }
     }
-}*/
+}
